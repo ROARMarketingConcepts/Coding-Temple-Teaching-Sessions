@@ -1,0 +1,6 @@
+"0","missing_data <- colSums(is.na(life_exp))"
+"0","missing_percent <- (missing_data/nrow(life_exp))*100"
+"0","missing_df <- data.frame("
+"0","    variable = names(missing_data),"
+"0","    missing_percent = missing_percent"
+"0",")"

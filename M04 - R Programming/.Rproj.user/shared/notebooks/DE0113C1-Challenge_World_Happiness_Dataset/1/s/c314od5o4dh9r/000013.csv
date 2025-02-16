@@ -1,0 +1,5 @@
+"0","country_stats <- whr_clean %>%"
+"0","    group_by(GDP) %>%"
+"0","    summarise("
+"0","        Avg_Happiness_Score = mean(Ladder.score)) %>%"
+"0","    arrange(desc(Avg_Happiness_Score))"

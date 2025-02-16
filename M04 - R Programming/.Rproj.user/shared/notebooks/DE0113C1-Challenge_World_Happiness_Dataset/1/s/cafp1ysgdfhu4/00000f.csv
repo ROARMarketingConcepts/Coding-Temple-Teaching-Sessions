@@ -1,0 +1,4 @@
+"0","whr_clean <- whr %>%"
+"0","    mutate(# Create a GDP variable"
+"0","        GDP = ifelse(Logged.GDP.per.capita >= median(whr$Logged.GDP.per.capita), ""High GDP"", ""Low GDP"")) %>%"
+"0","    filter(!is.na(Ladder.score))  # Remove rows with missing life expectancy values"

@@ -1,0 +1,8 @@
+"0","country_stats <- life_clean %>%"
+"0","    group_by(Country) %>%    #,Development_Status) %>%"
+"0","    summarise("
+"0","        Avg_Life_Exp = mean(Life.expectancy),"
+"0","        Avg_GDP_per_capita = mean(GDP_per_capita),"
+"0","        Avg_Schooling = mean(Schooling, na.rm = TRUE),"
+"0","        Avg_BMI = mean(BMI, na.rm = TRUE))  %>%"
+"0","    arrange(desc(Avg_Life_Exp))"

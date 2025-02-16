@@ -1,0 +1,163 @@
+---
+title: "Coding Temple R-Programming: Guided Demo"
+author: "Ken Wood"
+date: "2025-02-16"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+#### 1. Setting up the Environment
+
+Import necessary libraries and load the dataset:
+
+```{r message=FALSE}
+library(tidyverse)
+library(lubridate)
+library(skimr)
+library(dplyr)
+life_exp <- read.csv("data/Life Expectancy Data.csv")
+```
+#### 2. Initial Exploration of the Dataset
+
+Explore the structure and summary of the dataset:
+
+```{r summary}
+str(life_exp)  # View the structure of the dataset
+head(life_exp)  # Preview the first few rows
+summary(life_exp)  # Summary statistics of the dataset
+skim(life_exp)  # Detailed skim of the dataset
+```
+Check for missing data:
+
+```{r missing_data}
+missing_data <- colSums(is.na(life_exp))
+missing_percent <- (missing_data/nrow(life_exp))*100
+missing_df <- data.frame(
+    variable = names(missing_data),
+    missing_percent = missing_percent
+)
+```
+
+Visualize missing data:
+
+```{r}
+ggplot(missing_df, aes(x = reorder(variable, missing_percent),
+                    y = missing_percent)) +
+    geom_bar(stat = "identity") +
+    coord_flip() +
+    theme_minimal() +
+    labs(title = "Percentage of Missing Values by Variable",
+        x = "Variables", y = "Missing Percentage")
+
+```
+
+#### 3. Data Cleaning and Transformation
+
+Convert Year column to Date format, create new variables:
+
+```{r}
+life_clean <- life_exp %>%
+    mutate(
+        Year = as.Date(paste0(Year, "-01-01")),  # Convert Year to Date format
+        # Create a Development Status variable
+        Development_Status = ifelse(Status == "Developing", "Developing", "Developed"),  
+        GDP_per_capita = GDP / Population  # Create new meaningful variable for GDP per capita
+    ) %>%
+    filter(!is.na(Life.expectancy))  # Remove rows with missing life expectancy values
+```
+
+Group by Country and Development Status to calculate summary statistics:
+
+```{r}
+country_stats <- life_clean %>%
+    group_by(Country,Development_Status) %>%
+    summarise(
+        Avg_Life_Exp = mean(Life.expectancy),
+        Avg_GDP_per_capita = mean(GDP_per_capita),
+        Avg_Schooling = mean(Schooling, na.rm = TRUE),
+        Avg_BMI = mean(BMI, na.rm = TRUE))  %>%
+    arrange(desc(Avg_Life_Exp))
+```
+
+#### 4. Data Visualization
+
+Time Trend Plot (Life Expectancy by Development Status)
+
+```{r}
+yearly_trends <- life_clean %>%
+    group_by(Year, Development_Status) %>%
+    summarise(
+        Avg_Life_Exp = mean(Life.expectancy),
+        Avg_GDP_per_capita = mean(GDP_per_capita),
+        Avg_Alcohol = mean(Alcohol, na.rm = TRUE),
+        Avg_BMI = mean(BMI, na.rm = TRUE)
+    ) %>%
+    ungroup()
+
+time_plot <- ggplot(yearly_trends,
+                    aes(x = Year, y = Avg_Life_Exp, color = Development_Status)) +
+    geom_line(linewidth = 1) +
+    geom_point() +
+    theme_minimal() +
+    labs(title = "Life Expectancy Trends Over Time",
+        subtitle = "Comparing Developed vs Developing Countries",
+        x = "Year", y = "Average Life Expectancy", color = "Development Status") +
+    theme(legend.position = "bottom")
+print(time_plot)
+```
+
+Scatter Plot (Life Expectancy vs GDP per Capita):
+
+```{r}
+scatter_plot <- ggplot(life_clean,
+                    aes(x = GDP_per_capita, y = Life.expectancy, color = Development_Status)) +
+    geom_point(alpha = 0.6) +
+    scale_x_log10() +
+    geom_smooth(method = "lm", se = FALSE) +
+    theme_minimal() +
+    labs(title = "Life Expectancy vs GDP per Capita",
+        x = "GDP per Capita (log scale)", y = "Life Expectancy", color = "Development Status")
+print(scatter_plot)
+```
+
+Box Plot (Life Expectancy by Development Status):
+
+```{r}
+box_plot <- ggplot(life_clean,
+                aes(x = Development_Status, y = Life.expectancy, fill = Development_Status)) +
+    geom_boxplot() +
+    geom_jitter(alpha = 0.1) +
+    theme_minimal() +
+    labs(title = "Life Expectancy Distribution by Development Status",
+        x = "Development Status", y = "Life Expectancy")
+print(box_plot)
+```
+
+#### 5. Statistical Analysis: t-Test
+
+- **Hypothesis:** Do developed countries have significantly higher life expectancy than developing countries?
+
+Perform a t-test:
+
+```{r}
+t_test_result <- t.test(Life.expectancy ~ Development_Status, data = life_clean)
+print(t_test_result)
+```
+
+#### 6. Correlation and Regression Analysis
+
+Correlation Matrix:
+
+```{r}
+correlation_matrix <- life_clean %>%
+    select(Life.expectancy, GDP_per_capita, Schooling, BMI) %>%
+    cor(use = "complete.obs")
+print(correlation_matrix)
+```
+
+Linear Regression Model: Predict life expectancy using GDP per capita, schooling, and BMI:
+```{r}
+model <- lm(Life.expectancy ~ GDP_per_capita + Schooling + BMI, data = life_clean)
+summary(model)
+```

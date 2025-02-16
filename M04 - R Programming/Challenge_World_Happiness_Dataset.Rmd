@@ -1,0 +1,111 @@
+---
+title: "Coding Temple R-Programming Challenge: World Happiness Dataset"
+author: "Ken Wood"
+date: "2025-02-16"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+#### 1. Setting up the Environment
+
+Import necessary libraries and load the dataset:
+
+```{r message=FALSE}
+library(tidyverse)
+library(lubridate)
+library(skimr)
+library(dplyr)
+whr <- read.csv("data/WHR2023.csv")
+```
+#### 2. Initial Exploration of the Dataset
+
+Explore the structure and summary of the dataset:
+
+```{r summary}
+str(whr)  # View the structure of the dataset
+head(whr)  # Preview the first few rows
+summary(whr)  # Summary statistics of the dataset
+skim(whr)  # Detailed skim of the dataset
+```
+Check for missing data:
+
+```{r missing_data}
+missing_data <- colSums(is.na(whr))
+missing_percent <- (missing_data/nrow(whr))*100
+missing_df <- data.frame(
+    variable = names(missing_data),
+    missing_percent = missing_percent
+)
+```
+
+Visualize missing data:
+
+```{r}
+ggplot(missing_df, aes(x = reorder(variable, missing_percent),
+                    y = missing_percent)) +
+    geom_bar(stat = "identity") +
+    coord_flip() +
+    theme_minimal() +
+    labs(title = "Percentage of Missing Values by Variable",
+        x = "Variables", y = "Missing Percentage")
+
+```
+
+#### 3. Data Cleaning and Transformation
+
+Create a GDP category: Classify countries into High GDP or Low GDP based on whether their
+Logged.GDP.per.capita is above or below the median value.
+Hint: Use the median() function to find the median GDP, and ifelse() to categorize the
+countries.
+Clean the data: Remove any rows where the happiness score Ladder.score is missing
+
+```{r}
+whr_clean <- whr %>%
+    mutate(# Create a GDP variable
+    GDP = ifelse(Logged.GDP.per.capita >= median(whr$Logged.GDP.per.capita), "High GDP", "Low GDP")) %>%
+    filter(!is.na(Ladder.score))  # Remove rows with missing ladder score values
+```
+
+#### 2. Data Summarization
+
+Calculate average happiness scores: Group the dataset by GDP category (high vs. low GDP)
+and calculate the average happiness score Ladder.score for each group.
+
+```{r}
+country_stats <- whr_clean %>%
+    group_by(GDP) %>%
+    summarise(
+        Avg_Happiness_Score = mean(Ladder.score)) %>%
+    arrange(desc(Avg_Happiness_Score))
+```
+
+#### 3. Data Visualization
+Create a box plot: Create a box plot that compares the happiness scores Ladder.score
+between high and low GDP countries. Use ggplot2 to create the plot.s)
+
+
+Box Plot (Happiness Score by GDP):
+
+```{r}
+box_plot <- ggplot(whr_clean,
+                aes(x = GDP, y = Ladder.score)) +
+    geom_boxplot() +
+    geom_jitter(alpha = 0.1) +
+    theme_minimal() +
+    labs(title = "Happiness Score by GDP",
+        x = "GDP", y = "Happiness Score")
+print(box_plot)
+```
+
+#### 4. Statistical Analysis
+
+Perform a t-test: Perform a t-test to compare the average happiness scores between high and
+low GDP countries. Interpret the result briefly (focus on the p-value).
+
+```{r}
+t_test_result <- t.test(Ladder.score ~ GDP, data = whr_clean)
+print(t_test_result)
+```
+
+

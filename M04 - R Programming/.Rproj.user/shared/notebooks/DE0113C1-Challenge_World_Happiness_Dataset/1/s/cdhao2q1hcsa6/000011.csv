@@ -1,0 +1,8 @@
+"0","box_plot <- ggplot(whr_clean,"
+"0","                aes(x = GDP, y = Ladder.score)) +"
+"0","    geom_boxplot() +"
+"0","    geom_jitter(alpha = 0.1) +"
+"0","    theme_minimal() +"
+"0","    labs(title = ""Happiness Score by GDP"","
+"0","        x = ""GDP"", y = ""Happiness Score"")"
+"0","print(box_plot)"

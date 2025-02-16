@@ -1,0 +1,6 @@
+"0","missing_data <- colSums(is.na(whr))"
+"0","missing_percent <- (missing_data/nrow(whr))*100"
+"0","missing_df <- data.frame("
+"0","    variable = names(missing_data),"
+"0","    missing_percent = missing_percent"
+"0",")"

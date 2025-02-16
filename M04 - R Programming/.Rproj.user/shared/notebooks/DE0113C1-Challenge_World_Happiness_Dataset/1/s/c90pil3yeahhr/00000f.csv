@@ -1,0 +1,8 @@
+"0","ggplot(missing_df, aes(x = reorder(variable, missing_percent),"
+"0","                    y = missing_percent)) +"
+"0","    geom_bar(stat = ""identity"") +"
+"0","    coord_flip() +"
+"0","    theme_minimal() +"
+"0","    labs(title = ""Percentage of Missing Values by Variable"","
+"0","        x = ""Variables"", y = ""Missing Percentage"")"
+"0",""

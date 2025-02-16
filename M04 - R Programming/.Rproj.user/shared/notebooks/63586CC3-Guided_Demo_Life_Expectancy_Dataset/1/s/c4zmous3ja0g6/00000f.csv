@@ -1,0 +1,8 @@
+"0","life_clean <- life_exp %>%"
+"0","    mutate("
+"0","        Year = as.Date(paste0(Year, ""-01-01"")),  # Convert Year to Date format"
+"0","        # Create a Development Status variable"
+"0","        Development_Status = ifelse(Status == ""Developing"", ""Developing"", ""Developed""),  "
+"0","        GDP_per_capita = GDP / Population  # Create new meaningful variable for GDP per capita"
+"0","    ) %>%"
+"0","    filter(!is.na(Life.expectancy))  # Remove rows with missing life expectancy values"
