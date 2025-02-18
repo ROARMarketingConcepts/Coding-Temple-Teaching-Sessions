@@ -16,6 +16,7 @@ library(tidyverse)
 library(lubridate)
 library(skimr)
 library(dplyr)
+library(car)
 life_exp <- read.csv("data/Life Expectancy Data.csv")
 ```
 #### 2. Initial Exploration of the Dataset
@@ -161,3 +162,11 @@ Linear Regression Model: Predict life expectancy using GDP per capita, schooling
 model <- lm(Life.expectancy ~ GDP_per_capita + Schooling + BMI, data = life_clean)
 summary(model)
 ```
+Scatterplot of the `life_clean` dataset variables with linear regression lines.
+
+```{r}
+avPlots(model)
+```
+
+
+
