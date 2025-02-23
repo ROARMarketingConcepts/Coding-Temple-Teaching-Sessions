@@ -1,0 +1,671 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20243.24.1010.1014                               -->
+<workbook original-version='18.1' source-build='2024.3.0 (20243.24.1010.1014)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
+    <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <Heatmap />
+    <MapboxVectorStylesAndLayers />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column alias='Raw Temperature' caption='Temperature Metric' datatype='real' name='[Parameter 1]' param-domain-type='list' role='measure' type='quantitative' value='1.'>
+        <calculation class='tableau' formula='1.' />
+        <aliases>
+          <alias key='1.' value='Raw Temperature' />
+          <alias key='2.' value='Temperature Anomaly' />
+          <alias key='3.' value='Moving Average' />
+        </aliases>
+        <members>
+          <member alias='Raw Temperature' value='1.' />
+          <member alias='Temperature Anomaly' value='2.' />
+          <member alias='Moving Average' value='3.' />
+        </members>
+      </column>
+    </datasource>
+    <datasource caption='GlobalLandTemperaturesByCity' inline='true' name='federated.19odlsx112skhg1afe1gs03kw9is' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='GlobalLandTemperaturesByCity' name='textscan.1bxaslr1n7iejw1d9tnrm00bajym'>
+            <connection class='textscan' directory='/Users/woodzsan/Downloads/archive' filename='GlobalLandTemperaturesByCity.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.1bxaslr1n7iejw1d9tnrm00bajym' name='GlobalLandTemperaturesByCity.csv' table='[GlobalLandTemperaturesByCity#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='date' name='dt' ordinal='0' />
+            <column datatype='real' name='AverageTemperature' ordinal='1' />
+            <column datatype='real' name='AverageTemperatureUncertainty' ordinal='2' />
+            <column datatype='string' name='City' ordinal='3' />
+            <column datatype='string' name='Country' ordinal='4' />
+            <column datatype='string' name='Latitude' ordinal='5' />
+            <column datatype='string' name='Longitude' ordinal='6' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[GlobalLandTemperaturesByCity.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dt</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[dt]</local-name>
+            <parent-name>[GlobalLandTemperaturesByCity.csv]</parent-name>
+            <remote-alias>dt</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[GlobalLandTemperaturesByCity.csv_C98AA8B04370432EB7A244FBBEE82000]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AverageTemperature</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[AverageTemperature]</local-name>
+            <parent-name>[GlobalLandTemperaturesByCity.csv]</parent-name>
+            <remote-alias>AverageTemperature</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[GlobalLandTemperaturesByCity.csv_C98AA8B04370432EB7A244FBBEE82000]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AverageTemperatureUncertainty</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[AverageTemperatureUncertainty]</local-name>
+            <parent-name>[GlobalLandTemperaturesByCity.csv]</parent-name>
+            <remote-alias>AverageTemperatureUncertainty</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[GlobalLandTemperaturesByCity.csv_C98AA8B04370432EB7A244FBBEE82000]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>City</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[City]</local-name>
+            <parent-name>[GlobalLandTemperaturesByCity.csv]</parent-name>
+            <remote-alias>City</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[GlobalLandTemperaturesByCity.csv_C98AA8B04370432EB7A244FBBEE82000]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Country]</local-name>
+            <parent-name>[GlobalLandTemperaturesByCity.csv]</parent-name>
+            <remote-alias>Country</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[GlobalLandTemperaturesByCity.csv_C98AA8B04370432EB7A244FBBEE82000]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Latitude</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Latitude]</local-name>
+            <parent-name>[GlobalLandTemperaturesByCity.csv]</parent-name>
+            <remote-alias>Latitude</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[GlobalLandTemperaturesByCity.csv_C98AA8B04370432EB7A244FBBEE82000]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Longitude</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Longitude]</local-name>
+            <parent-name>[GlobalLandTemperaturesByCity.csv]</parent-name>
+            <remote-alias>Longitude</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[GlobalLandTemperaturesByCity.csv_C98AA8B04370432EB7A244FBBEE82000]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Average Temperature Uncertainty' datatype='real' name='[AverageTemperatureUncertainty]' role='measure' type='quantitative' />
+      <column caption='Average Temperature' datatype='real' name='[AverageTemperature]' role='measure' type='quantitative' />
+      <column caption='Month' datatype='string' name='[Calculation_78813043500785664]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='DATENAME(&apos;month&apos;, [dt])' />
+      </column>
+      <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+      <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column aggregation='Avg' datatype='integer' datatype-customized='true' name='[Latitude]' role='dimension' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column aggregation='Avg' datatype='real' datatype-customized='true' name='[Longitude]' role='dimension' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+      <column caption='GlobalLandTemperaturesByCity.csv' datatype='table' name='[__tableau_internal_object_id__].[GlobalLandTemperaturesByCity.csv_C98AA8B04370432EB7A244FBBEE82000]' role='measure' type='quantitative' />
+      <column caption='Dt' datatype='date' name='[dt]' role='dimension' type='ordinal' />
+      <drill-paths>
+        <drill-path name='Country, City'>
+          <field>[Country]</field>
+          <field>[City]</field>
+        </drill-path>
+      </drill-paths>
+      <extract _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='/var/folders/bs/zn7hxrnj0fx87gcf7r0jdfww0000gn/T/tableau-temp/#TableauTemp_1suf2hr0v0bsz8110kmm703mtrx2.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='02/22/2025 12:33:42 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>dt</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[dt]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>dt</remote-alias>
+              <ordinal>0</ordinal>
+              <family>GlobalLandTemperaturesByCity.csv</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>3740</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[GlobalLandTemperaturesByCity.csv_C98AA8B04370432EB7A244FBBEE82000]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>AverageTemperature</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[AverageTemperature]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>AverageTemperature</remote-alias>
+              <ordinal>1</ordinal>
+              <family>GlobalLandTemperaturesByCity.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>257614</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[GlobalLandTemperaturesByCity.csv_C98AA8B04370432EB7A244FBBEE82000]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>AverageTemperatureUncertainty</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[AverageTemperatureUncertainty]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>AverageTemperatureUncertainty</remote-alias>
+              <ordinal>2</ordinal>
+              <family>GlobalLandTemperaturesByCity.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>19014</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[GlobalLandTemperaturesByCity.csv_C98AA8B04370432EB7A244FBBEE82000]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>City</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[City]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>City</remote-alias>
+              <ordinal>3</ordinal>
+              <family>GlobalLandTemperaturesByCity.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3447</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[GlobalLandTemperaturesByCity.csv_C98AA8B04370432EB7A244FBBEE82000]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Country</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Country]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Country</remote-alias>
+              <ordinal>4</ordinal>
+              <family>GlobalLandTemperaturesByCity.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>159</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[GlobalLandTemperaturesByCity.csv_C98AA8B04370432EB7A244FBBEE82000]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Latitude</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Latitude]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Latitude</remote-alias>
+              <ordinal>5</ordinal>
+              <family>GlobalLandTemperaturesByCity.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>73</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[GlobalLandTemperaturesByCity.csv_C98AA8B04370432EB7A244FBBEE82000]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Longitude</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Longitude]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Longitude</remote-alias>
+              <ordinal>6</ordinal>
+              <family>GlobalLandTemperaturesByCity.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1227</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[GlobalLandTemperaturesByCity.csv_C98AA8B04370432EB7A244FBBEE82000]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='GlobalLandTemperaturesByCity.csv' id='GlobalLandTemperaturesByCity.csv_C98AA8B04370432EB7A244FBBEE82000'>
+            <properties context=''>
+              <relation connection='textscan.1bxaslr1n7iejw1d9tnrm00bajym' name='GlobalLandTemperaturesByCity.csv' table='[GlobalLandTemperaturesByCity#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='date' name='dt' ordinal='0' />
+                  <column datatype='real' name='AverageTemperature' ordinal='1' />
+                  <column datatype='real' name='AverageTemperatureUncertainty' ordinal='2' />
+                  <column datatype='string' name='City' ordinal='3' />
+                  <column datatype='string' name='Country' ordinal='4' />
+                  <column datatype='string' name='Latitude' ordinal='5' />
+                  <column datatype='string' name='Longitude' ordinal='6' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <actions>
+    <action caption='Dashboard Filter' name='[Action1_054532610C4A42AA93C30D8674BDB0FE]'>
+      <source type='sheet' worksheet='Temperature Heat Map' />
+      <link caption='Dashboard Filter' delimiter=',' escape='\' expression='tsl:Average%20Temperature%20by%20Year?' include-null='true' multi-select='true' url-escape='true' />
+      <command command='tsc:tsl-filter'>
+        <param name='target' value='Average Temperature by Year' />
+      </command>
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name='Average Temperature by Year'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='GlobalLandTemperaturesByCity' name='federated.19odlsx112skhg1afe1gs03kw9is' />
+          </datasources>
+          <datasource-dependencies datasource='federated.19odlsx112skhg1afe1gs03kw9is'>
+            <column caption='Average Temperature' datatype='real' name='[AverageTemperature]' role='measure' type='quantitative' />
+            <column-instance column='[AverageTemperature]' derivation='Avg' name='[avg:AverageTemperature:qk]' pivot='key' type='quantitative' />
+            <column caption='Dt' datatype='date' name='[dt]' role='dimension' type='ordinal' />
+            <column-instance column='[dt]' derivation='Year' name='[yr:dt:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.19odlsx112skhg1afe1gs03kw9is].[avg:AverageTemperature:qk]' scope='rows' value='Global Average Temperature' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <trendline enable-confidence-bands='false' enable-instant-analytics='true' enabled='true' exclude-color='false' exclude-intercept='false' fit='linear' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-markers-mode' value='auto' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.19odlsx112skhg1afe1gs03kw9is].[avg:AverageTemperature:qk]</rows>
+        <cols>[federated.19odlsx112skhg1afe1gs03kw9is].[yr:dt:ok]</cols>
+      </table>
+      <simple-id uuid='{B8B5E387-0F43-42C5-B497-6756F71C47B5}' />
+    </worksheet>
+    <worksheet name='Seasonal Analysis Box Plot'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='GlobalLandTemperaturesByCity' name='federated.19odlsx112skhg1afe1gs03kw9is' />
+          </datasources>
+          <datasource-dependencies datasource='federated.19odlsx112skhg1afe1gs03kw9is'>
+            <column caption='Average Temperature' datatype='real' name='[AverageTemperature]' role='measure' type='quantitative' />
+            <column caption='Month' datatype='string' name='[Calculation_78813043500785664]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='DATENAME(&apos;month&apos;, [dt])' />
+            </column>
+            <column-instance column='[AverageTemperature]' derivation='Avg' name='[avg:AverageTemperature:qk]' pivot='key' type='quantitative' />
+            <column caption='Dt' datatype='date' name='[dt]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_78813043500785664]' derivation='None' name='[none:Calculation_78813043500785664:nk]' pivot='key' type='nominal' />
+            <column-instance column='[dt]' derivation='Year' name='[yr:dt:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.19odlsx112skhg1afe1gs03kw9is].[avg:AverageTemperature:qk]' scope='rows' value='Average Temperature' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <lod column='[federated.19odlsx112skhg1afe1gs03kw9is].[yr:dt:ok]' />
+            </encodings>
+            <reference-line axis-column='[federated.19odlsx112skhg1afe1gs03kw9is].[avg:AverageTemperature:qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.19odlsx112skhg1afe1gs03kw9is].[avg:AverageTemperature:qk]' z-order='1' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.25' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+                <format attr='mark-color' value='#72b966' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.19odlsx112skhg1afe1gs03kw9is].[avg:AverageTemperature:qk]</rows>
+        <cols>[federated.19odlsx112skhg1afe1gs03kw9is].[none:Calculation_78813043500785664:nk]</cols>
+      </table>
+      <simple-id uuid='{FD6158F6-8313-4156-8EDA-5350F24BBB00}' />
+    </worksheet>
+    <worksheet name='Temperature Heat Map'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='GlobalLandTemperaturesByCity' name='federated.19odlsx112skhg1afe1gs03kw9is' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.19odlsx112skhg1afe1gs03kw9is'>
+            <column caption='Average Temperature' datatype='real' name='[AverageTemperature]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column-instance column='[AverageTemperature]' derivation='Avg' name='[avg:AverageTemperature:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.19odlsx112skhg1afe1gs03kw9is].[Longitude (generated)]' field-type='quantitative' max='32172773.948541537' min='-31580089.218512896' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.19odlsx112skhg1afe1gs03kw9is].[Latitude (generated)]' field-type='quantitative' max='8725305.175493896' min='-4618317.0606362894' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Heatmap' />
+            <encodings>
+              <color column='[federated.19odlsx112skhg1afe1gs03kw9is].[avg:AverageTemperature:qk]' />
+              <lod column='[federated.19odlsx112skhg1afe1gs03kw9is].[none:Country:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <encoding attr='density-color' palette='density_dark_red' type='interpolated' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.19odlsx112skhg1afe1gs03kw9is].[Latitude (generated)]</rows>
+        <cols>[federated.19odlsx112skhg1afe1gs03kw9is].[Longitude (generated)]</cols>
+      </table>
+      <simple-id uuid='{3EFC84AB-E583-4B08-AE25-F5780D4F3CAC}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='Dashboard 1'>
+      <style />
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='33799' id='3' name='Average Temperature by Year' w='98666' x='667' y='1120'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='35360' id='5' name='Temperature Heat Map' w='98666' x='667' y='34919'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='28601' id='6' name='Seasonal Analysis Box Plot' w='98666' x='667' y='70279'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='800' minheight='800' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='10' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97760' id='9' param='vert' type-v2='layout-flow' w='98666' x='667' y='1120'>
+                <zone fixed-size='262' h='33799' id='3' is-fixed='true' name='Average Temperature by Year' w='98666' x='667' y='1120'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='275' h='35360' id='5' is-fixed='true' name='Temperature Heat Map' w='98666' x='667' y='34919'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='221' h='28601' id='6' is-fixed='true' name='Seasonal Analysis Box Plot' w='98666' x='667' y='70279'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{263C10D0-6310-4A4C-99E4-D172991E3FF1}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='worksheet' name='Average Temperature by Year'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='bottom'>
+          <strip size='94'>
+            <card type='caption' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='fit-width' />
+      </viewpoint>
+      <simple-id uuid='{1CE3E67B-FA6C-4F3A-BAF1-C20468E6A5D0}' />
+    </window>
+    <window class='worksheet' name='Temperature Heat Map'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='16' />
+      </viewpoint>
+      <simple-id uuid='{4CACB6EF-0C3A-45A2-874E-F62CF3573F15}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Seasonal Analysis Box Plot'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='fit-width' />
+      </viewpoint>
+      <simple-id uuid='{1F3D6FF7-3233-4C35-B903-6786F5E5704B}' />
+    </window>
+    <window class='dashboard' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Average Temperature by Year'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Seasonal Analysis Box Plot'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Temperature Heat Map'>
+          <zoom type='entire-view' />
+          <default-map-tool-selection tool='1' />
+        </viewpoint>
+      </viewpoints>
+      <active id='5' />
+      <device-preview visible='true' />
+      <simple-id uuid='{4E20F360-CCC5-41D4-BFE2-E4D97828F28D}' />
+    </window>
+  </windows>
+</workbook>
