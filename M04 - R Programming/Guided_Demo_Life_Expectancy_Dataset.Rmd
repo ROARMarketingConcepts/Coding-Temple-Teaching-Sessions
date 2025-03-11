@@ -139,6 +139,12 @@ print(box_plot)
 
 - **Hypothesis:** Do developed countries have significantly higher life expectancy than developing countries?
 
+Null Hypothesis (H0):  There is no statistically significant difference in the mean life expectancy rate between developed and developing countries.
+
+Alternate Hypothesis (Ha):  There is a statistically significant difference in the mean life expectancy rate between developed and developing countries.
+
+
+
 Perform a t-test:
 
 ```{r}
